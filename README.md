@@ -25,14 +25,14 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 ## 🏗️ Project Structure
 
 ```
-molus-landing-page/
+/
 ├── app/                # Next.js app directory
 ├── components/         # React components
 │   ├── Hero.tsx       # Main landing section
 │   ├── Navigation.tsx # Site navigation
 │   ├── Footer.tsx     # Site footer
 │   ├── PastClients.tsx # Client showcase with animated carousel
-│   └── ...           # Other components
+│   └── ui/            # Reusable UI components
 ├── lib/               # Utility functions
 ├── public/            # Static assets
 │   └── images/       # Image assets
