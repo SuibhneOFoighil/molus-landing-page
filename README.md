@@ -12,8 +12,10 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - 🔍 SEO optimized
 - 🛠 TypeScript for type safety
 - 🔄 Interactive logo carousel with hover pause
-- 🎯 Smooth animations and transitions
+- 🎯 Smooth scroll navigation
 - 🌟 Modern pill-style client showcase
+- 🎨 Dynamic gradient backgrounds
+- 📱 Mobile-first responsive design
 
 ## 📝 Available Scripts
 
@@ -28,14 +30,16 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 /
 ├── app/                # Next.js app directory
 ├── components/         # React components
-│   ├── Hero.tsx       # Main landing section
-│   ├── Navigation.tsx # Site navigation
-│   ├── Footer.tsx     # Site footer
+│   ├── Hero.tsx       # Main landing section with gradient background
+│   ├── Navigation.tsx # Site navigation with smooth scroll
+│   ├── Background.tsx # Gradient background component
 │   ├── PastClients.tsx # Client showcase with animated carousel
+│   ├── WhoWeAre.tsx   # Team section with member showcase
+│   ├── ContactForm.tsx # Contact form with animations
 │   └── ui/            # Reusable UI components
 ├── lib/               # Utility functions
 ├── public/            # Static assets
-│   └── images/       # Image assets
+│   └── images/        # Image assets
 └── styles/           # Global styles
 ```
 
@@ -51,16 +55,35 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 
 ## 💫 Component Features
 
+### Navigation Component
+- 🔄 Smooth scroll navigation to sections
+- 📱 Responsive mobile menu
+- 🎯 Fixed header with hide/show on scroll
+- 💫 Animated transitions
+
+### Hero Component
+- 🎨 Dynamic gradient background
+- 💫 Staggered fade-in animations
+- 📱 Responsive text sizing
+- 🔄 Interactive CTA button
+
 ### PastClients Component
-
-The PastClients section showcases our client partnerships with these key features:
-
-- 🔄 Animated logo carousel with smooth transitions
-- ⏸️ Hover-to-pause interaction for better UX
-- 🎨 Elegant pill-style containers with hover effects
-- 📱 Responsive design with optimized mobile view
-- 🖼️ Grayscale-to-color transition on hover
+- 🔄 Animated logo carousel
+- ⏸️ Hover-to-pause interaction
+- 🎨 Grayscale-to-color transition
+- 📱 Responsive column layout
 - ⚡️ Performance optimized with React hooks
-- 🎯 Framer Motion animations for smooth transitions
 
-The component uses a column-based distribution system for logos and implements pause-on-hover functionality for better user interaction. Each logo is displayed in a modern pill-shaped container that elevates and reveals the original logo colors on hover.
+### WhoWeAre Component
+- 🎯 Interactive team member showcase
+- 💫 Smooth transitions between members
+- 📱 Responsive grid layout
+- 🎨 Modern card design
+
+### ContactForm Component
+- 💫 Animated form fields
+- 🎨 Modern messaging UI preview
+- 📱 Responsive layout
+- ✨ Interactive submit button
+
+The components use a column-based distribution system for logos and implement pause-on-hover functionality for better user interaction. Each component is built with accessibility and performance in mind, utilizing TypeScript for type safety and Framer Motion for smooth animations.

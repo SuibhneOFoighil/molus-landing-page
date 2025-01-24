@@ -29,6 +29,7 @@ export function ContactForm() {
 
   return (
     <motion.section 
+      id="contact"
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}

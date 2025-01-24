@@ -40,6 +40,7 @@ export function WhoWeAre() {
 
   return (
     <motion.section 
+      id="about"
       ref={ref}
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}

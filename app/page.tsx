@@ -10,7 +10,7 @@ import { Footer } from '@/components/Footer'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-700 via-teal-800 to-teal-900 pt-4 font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-green-700 via-teal-800 to-teal-900 font-sans">
       <Navigation />
       <Hero />
       <PastClients />
