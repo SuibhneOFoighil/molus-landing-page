@@ -30,20 +30,32 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 ```
 /
 ├── app/                # Next.js app directory
-│   └── casestudies/   # Case studies page
+│   ├── casestudies/   # Case studies page
+│   ├── fonts/         # Font configuration
+│   ├── fonts.ts       # Font imports
+│   ├── globals.css    # Global styles
+│   ├── layout.tsx     # Root layout
+│   └── page.tsx       # Home page
 ├── components/         # React components
-│   ├── Hero.tsx       # Main landing section with gradient background
-│   ├── Navigation.tsx # Site navigation with smooth scroll
-│   ├── Background.tsx # Gradient background component
-│   ├── PastClients.tsx # Client showcase with animated carousel
-│   ├── WhoWeAre.tsx   # Team section with member showcase
-│   ├── ContactForm.tsx # Contact form with animations
+│   ├── Hero.tsx       # Main landing section
+│   ├── Navigation.tsx # Site navigation
+│   ├── PastClients.tsx # Client showcase
+│   ├── PilotProgram.tsx # Pilot program section
+│   ├── Solution.tsx    # Solution showcase
+│   ├── TheChallenge.tsx # Challenge section
+│   ├── WhoWeAre.tsx    # Team section
+│   ├── ContactForm.tsx # Contact form
+│   ├── Footer.tsx     # Site footer
 │   └── ui/            # Reusable UI components
 ├── lib/               # Utility functions
-│   └── utils.ts       # Shared utilities like smooth scroll
+│   └── utils.ts       # Shared utilities
 ├── public/            # Static assets
 │   └── images/        # Image assets
-└── styles/           # Global styles
+└── config/            # Configuration files
+    ├── next.config.mjs     # Next.js config
+    ├── tailwind.config.ts  # Tailwind config
+    ├── postcss.config.mjs  # PostCSS config
+    └── components.json     # UI components config
 ```
 
 ## 🎨 Tech Stack
