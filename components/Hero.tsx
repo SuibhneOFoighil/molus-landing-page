@@ -6,6 +6,7 @@ import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { Background } from '@/components/ui/background'
+import { handleSmoothScroll } from '@/lib/utils'
 
 /**
  * Animation configurations for the hero section
@@ -81,7 +82,11 @@ const CtaButton = ({ isInView }: AnimatedComponentProps) => (
       asChild
       className="bg-[#e2d210] hover:bg-[#e2d210]/90 text-black font-medium px-8 py-6 text-lg rounded-full transition-all duration-300 hover:shadow-lg group"
     >
-      <Link href="/apply" className="flex items-center">
+      <Link 
+        href="#contact" 
+        onClick={(e) => handleSmoothScroll(e, '#contact')}
+        className="flex items-center"
+      >
         <span className="mr-2">{HERO_CONTENT.ctaText}</span>
         <span className="w-0 overflow-hidden group-hover:w-5 transition-all duration-300 ease-in-out flex items-center">
           <ArrowRight className="h-5 w-5 text-black flex-shrink-0" />

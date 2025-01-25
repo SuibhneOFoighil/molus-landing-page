@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, X, ArrowRight } from 'lucide-react'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
+import { handleSmoothScroll } from '@/lib/utils'
 
 // Constants
 const NAVIGATION_ITEMS = [
@@ -40,24 +41,6 @@ const Logo = ({ onClick }: { onClick?: () => void }) => (
   </Link>
 )
 
-const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-  e.preventDefault()
-  const targetId = href.replace('#', '')
-  const element = document.getElementById(targetId)
-  if (element) {
-    const offset = 80 // Account for fixed header
-    const bodyRect = document.body.getBoundingClientRect().top
-    const elementRect = element.getBoundingClientRect().top
-    const elementPosition = elementRect - bodyRect
-    const offsetPosition = elementPosition - offset
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth'
-    })
-  }
-}
-
 const DesktopNavigation = () => (
   <motion.div 
     initial={{ opacity: 0 }}
@@ -73,7 +56,7 @@ const DesktopNavigation = () => (
       >
         <Link 
           href={href}
-          onClick={(e) => handleScroll(e, href)}
+          onClick={(e) => handleSmoothScroll(e, href)}
           className="text-white/90 hover:text-white text-base font-medium transition-colors"
         >
           {label}
@@ -97,7 +80,7 @@ const ContactButton = ({ className, onClick }: { className?: string, onClick?: (
       <Link 
         href="#contact"
         onClick={(e) => {
-          handleScroll(e, '#contact')
+          handleSmoothScroll(e, '#contact')
           onClick?.()
         }}
       >
@@ -136,7 +119,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (open: 
               key={label}
               href={href}
               onClick={(e) => {
-                handleScroll(e, href)
+                handleSmoothScroll(e, href)
                 setIsOpen(false)
               }}
               className="text-lg hover:text-white/80 transition-colors"

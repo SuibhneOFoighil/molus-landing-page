@@ -2,6 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect, useCallback } from 'react'
+import Link from 'next/link'
 
 /**
  * Represents a client logo with its metadata
@@ -157,38 +158,40 @@ const LogoColumn = ({ logos, index, currentTime, onHover }: LogoColumnProps) => 
       transition={{ delay: index * 0.1, ...ANIMATION_CONFIG.fadeUp.transition }}
     >
       <AnimatePresence mode="wait">
-        <motion.div
-          key={`${currentLogo.id}-${currentIndex}`}
-          className="group bg-[#fffdf0] rounded-full px-6 md:px-12 py-4 md:py-6 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 ease-out cursor-pointer mx-auto"
-          style={{ maxWidth: '90vw' }}
-          onMouseEnter={() => onHover(true)}
-          onMouseLeave={() => onHover(false)}
-          initial={{ y: "10%", opacity: 0, filter: "blur(8px)" }}
-          animate={{
-            y: "0%",
-            opacity: 1,
-            filter: "blur(0px)",
-            transition: ANIMATION_CONFIG.spring,
-          }}
-          exit={{
-            y: "-20%",
-            opacity: 0,
-            filter: "blur(6px)",
-            transition: {
-              type: "tween",
-              ease: "easeIn",
-              duration: 0.3,
-            },
-          }}
-        >
-          <div className="flex items-center justify-center">
-            <img 
-              src={currentLogo.src || "/public/images/placeholder.svg"} 
-              alt={currentLogo.name}
-              className="h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-56 object-contain grayscale brightness-50 contrast-125 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100"
-            />
-          </div>
-        </motion.div>
+        <Link href="/casestudies" className="block">
+          <motion.div
+            key={`${currentLogo.id}-${currentIndex}`}
+            className="group bg-[#fffdf0] rounded-full px-6 md:px-12 py-4 md:py-6 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 ease-out cursor-pointer mx-auto"
+            style={{ maxWidth: '90vw' }}
+            onMouseEnter={() => onHover(true)}
+            onMouseLeave={() => onHover(false)}
+            initial={{ y: "10%", opacity: 0, filter: "blur(8px)" }}
+            animate={{
+              y: "0%",
+              opacity: 1,
+              filter: "blur(0px)",
+              transition: ANIMATION_CONFIG.spring,
+            }}
+            exit={{
+              y: "-20%",
+              opacity: 0,
+              filter: "blur(6px)",
+              transition: {
+                type: "tween",
+                ease: "easeIn",
+                duration: 0.3,
+              },
+            }}
+          >
+            <div className="flex items-center justify-center">
+              <img 
+                src={currentLogo.src || "/public/images/placeholder.svg"} 
+                alt={currentLogo.name}
+                className="h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-56 object-contain grayscale brightness-50 contrast-125 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100"
+              />
+            </div>
+          </motion.div>
+        </Link>
       </AnimatePresence>
     </motion.div>
   )

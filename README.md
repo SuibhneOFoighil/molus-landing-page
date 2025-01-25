@@ -16,6 +16,7 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - 🌟 Modern pill-style client showcase
 - 🎨 Dynamic gradient backgrounds
 - 📱 Mobile-first responsive design
+- 📖 Case studies page with smooth transitions
 
 ## 📝 Available Scripts
 
@@ -29,6 +30,7 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 ```
 /
 ├── app/                # Next.js app directory
+│   └── casestudies/   # Case studies page
 ├── components/         # React components
 │   ├── Hero.tsx       # Main landing section with gradient background
 │   ├── Navigation.tsx # Site navigation with smooth scroll
@@ -38,6 +40,7 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 │   ├── ContactForm.tsx # Contact form with animations
 │   └── ui/            # Reusable UI components
 ├── lib/               # Utility functions
+│   └── utils.ts       # Shared utilities like smooth scroll
 ├── public/            # Static assets
 │   └── images/        # Image assets
 └── styles/           # Global styles
@@ -65,7 +68,7 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - 🎨 Dynamic gradient background
 - 💫 Staggered fade-in animations
 - 📱 Responsive text sizing
-- 🔄 Interactive CTA button
+- 🔄 Interactive CTA button with smooth scroll
 
 ### PastClients Component
 - 🔄 Animated logo carousel
@@ -73,6 +76,14 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - 🎨 Grayscale-to-color transition
 - 📱 Responsive column layout
 - ⚡️ Performance optimized with React hooks
+- 🔗 Interactive logos linking to case studies
+
+### Case Studies Page
+- 🎨 Consistent dark theme design
+- 💫 Smooth animations and transitions
+- 🔙 Context-aware back navigation
+- 🎯 Smooth scroll to previous section
+- 🌟 Dynamic icon with gradient effect
 
 ### WhoWeAre Component
 - 🎯 Interactive team member showcase
