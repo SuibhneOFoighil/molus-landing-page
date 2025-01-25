@@ -2,34 +2,29 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { CheckCircle, Linkedin } from 'lucide-react'
+import { CheckCircle, Linkedin, Globe } from 'lucide-react'
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 
 const teamMembers = [
   {
-    name: "Jason Statham",
-    role: "Lorem ipsum dolor sit amet consectetur. Diam odio in elit laoreet. Diam sit elit consectetur odio erat. Sit vestibulum ut.",
-    image: "/public/images/placeholder.svg",
-    linkedin: "#",
+    name: "Suibhne Ó Foighil",
+    role: "Head of Engineering and Founder of Molus",
+    image: "/images/suibhne.jpeg",
+    linkedin: "https://www.linkedin.com/in/suibhneofoighil/",
   },
   {
-    name: "Kerry Miles",
-    role: "Experienced product manager with a passion for AI-driven solutions. Specializes in bridging the gap between technical capabilities and market needs.",
-    image: "/public/images/placeholder.svg",
-    linkedin: "#",
+    name: "Akhila Kosaraju",
+    role: "Head of Design and Founder of WhatifDesign",
+    image: "/images/akhila.jpeg",
+    linkedin: "https://www.linkedin.com/in/akhilakosaraju",
+    website: "https://www.whatifdesign.co/",
   },
   {
-    name: "Malik Berry",
-    role: "Senior software engineer with expertise in scalable cloud architectures. Passionate about creating robust and efficient backend systems.",
-    image: "/public/images/placeholder.svg",
-    linkedin: "#",
-  },
-  {
-    name: "Seyi Adeleke",
-    role: "AI researcher and machine learning expert. Focuses on developing cutting-edge algorithms to solve complex business problems.",
-    image: "/public/images/placeholder.svg",
-    linkedin: "#",
+    name: "Moses Lee",
+    role: "Lead Business Advisor",
+    image: "/images/moseslee.jpeg",
+    linkedin: "https://www.linkedin.com/in/mosesklee/",
   },
 ]
 
@@ -100,9 +95,16 @@ export function WhoWeAre() {
                   </div>
                   <h3 className="text-white text-2xl font-bold mb-4">{selectedMember.name}</h3>
                   <p className="text-white/80 mb-6">{selectedMember.role}</p>
-                  <Link href={selectedMember.linkedin} className="text-white/60 hover:text-white">
-                    <Linkedin className="h-6 w-6" />
-                  </Link>
+                  <div className="flex items-center gap-4">
+                    <Link href={selectedMember.linkedin} className="text-white/60 hover:text-white">
+                      <Linkedin className="h-6 w-6" />
+                    </Link>
+                    {selectedMember.website && (
+                      <Link href={selectedMember.website} className="text-white/60 hover:text-white">
+                        <Globe className="h-6 w-6" />
+                      </Link>
+                    )}
+                  </div>
                 </motion.div>
               </AnimatePresence>
               <div className="space-y-4 mt-8">
@@ -130,14 +132,14 @@ export function WhoWeAre() {
                 animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="md:w-1/2"
+                className="md:w-1/2 relative h-[600px]"
               >
                 <Image
                   src={selectedMember.image}
                   alt={selectedMember.name}
                   width={600}
                   height={600}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </motion.div>
             </AnimatePresence>

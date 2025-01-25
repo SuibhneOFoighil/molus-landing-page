@@ -98,10 +98,39 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - 🌟 Dynamic icon with gradient effect
 
 ### WhoWeAre Component
-- 🎯 Interactive team member showcase
-- 💫 Smooth transitions between members
-- 📱 Responsive grid layout
-- 🎨 Modern card design
+```typescript
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  linkedin: string;
+  website?: string;
+}
+```
+
+**Key Dependencies:**
+- framer-motion: Handles animations and transitions
+- lucide-react: Provides LinkedIn and Globe icons
+- next/image: Optimized image handling
+
+**State Management:**
+- Uses useState for selected team member tracking
+- useInView hook for scroll-based animations
+
+**Implementation Notes:**
+- AnimatePresence manages mount/unmount transitions
+- Image dimensions standardized to 600x600px
+- Mobile-first responsive layout using Tailwind breakpoints
+- Social links support both LinkedIn and optional website URLs
+
+**Usage Example:**
+```tsx
+<WhoWeAre />  // No props required - team data is internal
+```
+
+**Key Files:**
+- components/WhoWeAre.tsx - Main component
+- public/images/* - Team member images (600x600px recommended)
 
 ### ContactForm Component
 - 💫 Animated form fields
