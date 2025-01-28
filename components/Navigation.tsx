@@ -34,31 +34,21 @@ const LOGO_CONFIG = {
   className: "h-11 w-auto"
 } as const
 
-// Hook to handle mouse position and scroll behavior
+// Hook to handle scroll behavior
 function useNavVisibility() {
   const [hidden, setHidden] = useState(false)
-  const [mouseNearTop, setMouseNearTop] = useState(false)
   const { scrollY } = useScroll()
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMouseNearTop(e.clientY < 150)
-    }
-
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0
-    if (latest > previous && latest > 150 && !mouseNearTop) {
+    if (latest > previous && latest > 150) {
       setHidden(true)
     } else {
       setHidden(false)
     }
   })
 
-  return { hidden: hidden && !mouseNearTop }
+  return { hidden }
 }
 
 // Sub-components

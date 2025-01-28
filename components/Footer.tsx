@@ -19,26 +19,30 @@ export function Footer() {
       className="relative bg-black text-white overflow-hidden"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 pointer-events-none select-none">
+      <div className="absolute inset-0">
         <motion.div
           initial={{ x: -100, opacity: 0 }}
           animate={isInView ? { x: 0, opacity: 1 } : { x: -100, opacity: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="w-full h-full relative"
+          className="relative w-full h-full"
         >
-          <Image
-            src="/images/footer-background.svg"
-            alt="Footer background"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-10"
-          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative w-[200%] aspect-[809/861]">
+              <Image
+                src="/images/Molus_Logo_Horizontal_White.png"
+                alt="Molus background"
+                fill
+                className="opacity-[0.03] object-contain"
+                priority
+              />
+            </div>
+          </div>
         </motion.div>
       </div>
 
       {/* Main Footer Content */}
-      <div className="relative max-w-7xl mx-auto px-6 py-24">
-        <div className="space-y-6 mb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="py-16 space-y-4">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
@@ -46,20 +50,20 @@ export function Footer() {
             className="flex items-center gap-3"
           >
             <Image
-              src="/images/public/images/placeholder.svg"
+              src="/images/Molus_Logo_Horizontal_White.png"
               alt="Molus logo"
-              width={32}
-              height={32}
-              className="w-8 h-8"
+              width={200}
+              height={46}
+              className="h-11 w-auto"
+              priority
             />
-            <span className="text-2xl font-bold">molus</span>
           </motion.div>
 
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="space-y-2"
+            className="space-y-1 text-white/60"
           >
             <p>Lorem ipsum dolor sit amet consectetur.</p>
             <p>Velit morbi dolor risus mauris ut lacus vitae.</p>
@@ -88,7 +92,7 @@ export function Footer() {
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
-          className="pt-8 border-t border-white/10"
+          className="py-6 border-t border-white/10"
         >
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-sm text-white/60">
