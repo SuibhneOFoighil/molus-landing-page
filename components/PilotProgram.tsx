@@ -104,17 +104,23 @@ export function PilotProgram() {
           transition={{ delay: 1.4, duration: 0.5 }}
           className="bg-white rounded-3xl p-8 md:p-12 max-w-3xl mx-auto text-center shadow-lg hover:shadow-xl transition-all duration-300"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-4">
+          <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
             Transform Your Idea Into Reality—Apply for the Pilot Program
           </h3>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-8 text-lg">
             We're only accepting 3 startups for this cohort. Apply now to secure your spot!
           </p>
-          <p className="text-3xl md:text-4xl font-bold mb-8">
-            <span className="text-black">$5,000</span>
-            <span className="text-gray-500 text-lg">/month for 3 months </span>
-            <span className="text-gray-500">($15k total)</span>
-          </p>
+          <div className="flex flex-col items-center justify-center gap-2 mb-8">
+            <div className="flex items-baseline justify-center gap-2">
+              <span className="text-5xl md:text-6xl font-bold tracking-tight">$5,000</span>
+              <span className="text-xl text-gray-500">/month</span>
+            </div>
+            <p className="text-gray-500">
+              <span className="font-medium">for 3 months</span>
+              <span className="mx-2">·</span>
+              <span className="font-medium">$15k total</span>
+            </p>
+          </div>
           <motion.div
             whileHover={{ 
               scale: 1.05,

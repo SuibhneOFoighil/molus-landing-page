@@ -17,6 +17,7 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - 🎨 Dynamic gradient backgrounds
 - 📱 Mobile-first responsive design
 - 📖 Case studies page with smooth transitions
+- 📧 Secure email handling with Nodemailer
 
 ## 📝 Available Scripts
 
@@ -30,6 +31,8 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 ```
 /
 ├── app/                # Next.js app directory
+│   ├── api/           # API routes
+│   │   └── contact/   # Email handling endpoint
 │   ├── casestudies/   # Case studies page
 │   ├── fonts/         # Font configuration
 │   ├── fonts.ts       # Font imports
@@ -67,6 +70,7 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - [Shadcn/UI](https://ui.shadcn.com/) - UI components
 - [Radix UI](https://www.radix-ui.com/) - UI components
 - [Lucide React](https://lucide.dev/) - Icons
+- [Nodemailer](https://nodemailer.com/) - Email handling
 
 ## 💫 Component Features
 
@@ -137,5 +141,23 @@ interface TeamMember {
 - 🎨 Modern messaging UI preview
 - 📱 Responsive layout
 - ✨ Interactive submit button
+- 📧 Direct email submission via Nodemailer
+- 🔔 Success/error notifications
+- 🔄 Form state management
+- 🛡️ Server-side email handling
+
+**Email Configuration:**
+```typescript
+// Required environment variables
+EMAIL_USER=your-email@gmail.com    // Gmail address
+EMAIL_PASS=your-app-password       // Gmail app-specific password
+```
+
+**Implementation Notes:**
+- Uses Next.js API routes for secure email handling
+- Gmail SMTP integration via Nodemailer
+- Proper error handling and user feedback
+- Form validation and sanitization
+- Responsive success/error notifications
 
 The components use a column-based distribution system for logos and implement pause-on-hover functionality for better user interaction. Each component is built with accessibility and performance in mind, utilizing TypeScript for type safety and Framer Motion for smooth animations.

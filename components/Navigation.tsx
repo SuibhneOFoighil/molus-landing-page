@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
@@ -33,6 +33,33 @@ const LOGO_CONFIG = {
   height: 46,
   className: "h-11 w-auto"
 } as const
+
+// Hook to handle mouse position and scroll behavior
+function useNavVisibility() {
+  const [hidden, setHidden] = useState(false)
+  const [mouseNearTop, setMouseNearTop] = useState(false)
+  const { scrollY } = useScroll()
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMouseNearTop(e.clientY < 150)
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0
+    if (latest > previous && latest > 150 && !mouseNearTop) {
+      setHidden(true)
+    } else {
+      setHidden(false)
+    }
+  })
+
+  return { hidden: hidden && !mouseNearTop }
+}
 
 // Sub-components
 const Logo = ({ onClick }: { onClick?: () => void }) => (
@@ -153,17 +180,7 @@ const MobileMenu = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (open: 
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
-  const [hidden, setHidden] = useState(false)
-  const { scrollY } = useScroll()
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious() ?? 0
-    if (latest > previous && latest > 150) {
-      setHidden(true)
-    } else {
-      setHidden(false)
-    }
-  })
+  const { hidden } = useNavVisibility()
 
   return (
     <motion.nav 
@@ -173,6 +190,7 @@ export function Navigation() {
         hidden: { y: -100, opacity: 0 }
       }}
       animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.3 }}
       className="fixed top-4 z-50 w-full px-6"
     >
       <div className="mx-auto max-w-7xl bg-black/90 backdrop-blur-sm rounded-full px-8 py-4 flex items-center justify-between">
