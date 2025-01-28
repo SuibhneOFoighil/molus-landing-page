@@ -19,12 +19,12 @@ interface Logo {
  * Each logo has a unique ID and source path
  */
 const LOGOS: Logo[] = [
-  { name: "RxPlora", id: 1, src: "images/rxplora_logo.png" },
-  { name: "M12 Planner", id: 2, src: "images/m12_logo.png" },
-  { name: "Ludus Cloud", id: 3, src: "images/ludus_logo.png" },
-  { name: "Spark", id: 4, src: "images/spark_logo.png" },
-  { name: "DATA at NSF", id: 5, src: "images/nsf_logo.png" },
-  { name: "DATA at University of Michigan", id: 6, src: "images/umich_logo.png" }
+  { name: "RxPlora", id: 1, src: "/images/rxplora_logo.png" },
+  { name: "M12 Planner", id: 2, src: "/images/m12_logo.png" },
+  { name: "Ludus Cloud", id: 3, src: "/images/ludus_logo.png" },
+  { name: "Spark", id: 4, src: "/images/spark_logo.png" },
+  { name: "DATA at NSF", id: 5, src: "/images/nsf_logo.png" },
+  { name: "DATA at University of Michigan", id: 6, src: "/images/umich_logo.png" }
 ] as const
 
 /**

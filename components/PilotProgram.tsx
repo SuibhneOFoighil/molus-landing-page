@@ -107,7 +107,7 @@ export function PilotProgram() {
           <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
             Transform Your Idea Into Reality—Apply for the Pilot Program
           </h3>
-          <p className="text-lg text-white/60 max-w-2xl mb-8">
+          <p className="text-lg text-gray-600 max-w-2xl mb-8">
             We&apos;re excited to learn about your startup and explore how we can help you succeed.
           </p>
           <div className="flex flex-col items-center justify-center gap-2 mb-8">
