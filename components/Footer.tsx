@@ -99,7 +99,7 @@ export function Footer() {
               Copyright © 2024 Molus. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center sm:justify-end gap-4 sm:gap-8">
-              {['Privacy Policy', 'Terms of Service', 'Cookies Settings'].map((item, index) => (
+              {['Privacy Policy', 'Terms of Service', 'Cookies Settings'].map((item) => (
                 <motion.div
                   key={item}
                   whileHover={{ scale: 1.05 }}

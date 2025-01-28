@@ -52,7 +52,7 @@ export function ContactForm() {
 
       setFormStatus({
         type: 'success',
-        message: 'Message sent successfully! We\'ll get back to you soon.'
+        message: 'Message sent successfully! We&apos;ll get back to you soon.'
       })
       
       // Reset form after successful submission
@@ -132,7 +132,7 @@ export function ContactForm() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 tracking-tight"
           >
-            Let's Build Together
+            Let&apos;s Build Together
           </motion.h2>
           
           <motion.p 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
@@ -54,7 +54,7 @@ function useNavVisibility() {
 // Sub-components
 const Logo = ({ onClick }: { onClick?: () => void }) => (
   <Link href="/" className="text-white" onClick={onClick}>
-    <Image {...LOGO_CONFIG} />
+    <Image {...LOGO_CONFIG} alt="Molus logo" />
   </Link>
 )
 

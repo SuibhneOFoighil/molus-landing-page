@@ -3,6 +3,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 /**
  * Represents a client logo with its metadata
@@ -105,9 +106,11 @@ const SectionHeader = ({ isInView }: AnimatedComponentProps) => (
       transition={{ delay: 0.4, duration: 0.5, type: "spring", stiffness: 200 }}
       className="flex justify-center mb-8"
     >
-      <img 
-        src="/images/victory.svg" 
+      <Image
+        src="/images/victory.svg"
         alt="Victory laurel"
+        width={128}
+        height={128}
         className="w-24 h-24 md:w-32 md:h-32 text-black/80"
       />
     </motion.div>
@@ -184,9 +187,11 @@ const LogoColumn = ({ logos, index, currentTime, onHover }: LogoColumnProps) => 
             }}
           >
             <div className="flex items-center justify-center">
-              <img 
-                src={currentLogo.src || "/public/images/placeholder.svg"} 
+              <Image
+                src={currentLogo.src || "/images/placeholder.svg"}
                 alt={currentLogo.name}
+                width={224}
+                height={80}
                 className="h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-56 object-contain grayscale brightness-50 contrast-125 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100"
               />
             </div>

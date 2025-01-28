@@ -59,7 +59,7 @@ export function PilotProgram() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="text-center mb-16 text-xl"
         >
-          What you'll get.
+          What you&apos;ll get.
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -107,8 +107,8 @@ export function PilotProgram() {
           <h3 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">
             Transform Your Idea Into Reality—Apply for the Pilot Program
           </h3>
-          <p className="text-gray-600 mb-8 text-lg">
-            We're only accepting 3 startups for this cohort. Apply now to secure your spot!
+          <p className="text-lg text-white/60 max-w-2xl mb-8">
+            We&apos;re excited to learn about your startup and explore how we can help you succeed.
           </p>
           <div className="flex flex-col items-center justify-center gap-2 mb-8">
             <div className="flex items-baseline justify-center gap-2">
