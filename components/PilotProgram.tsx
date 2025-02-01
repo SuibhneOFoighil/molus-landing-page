@@ -39,9 +39,9 @@ export function PilotProgram() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="flex items-center justify-center gap-4 mb-16"
         >
-          <div className="h-px bg-black/20 w-24"></div>
-          <span className="bg-white px-4 py-1 rounded-full text-sm font-medium">SCHEDULE A FREE DEMO</span>
-          <div className="h-px bg-black/20 w-24"></div>
+          <div className="hidden md:block h-px bg-black/20 w-24"></div>
+          <span className="bg-white px-6 py-2 rounded-full text-sm font-medium">SCHEDULE A FREE DEMO</span>
+          <div className="hidden md:block h-px bg-black/20 w-24"></div>
         </motion.div>
 
         <motion.h2 

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { CheckCircle, Linkedin, Globe } from 'lucide-react'
+import { CheckCircle, Linkedin, Globe, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 
@@ -32,6 +32,37 @@ export function WhoWeAre() {
   const [selectedMember, setSelectedMember] = useState(teamMembers[0])
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
+  const [dragStart, setDragStart] = useState(0)
+
+  const handleDragStart = (event: any) => {
+    setDragStart(event.pageX || event.touches[0].pageX)
+  }
+
+  const handleDragEnd = (event: any) => {
+    const dragEnd = event.pageX || event.changedTouches[0].pageX
+    const diff = dragStart - dragEnd
+    const threshold = 50 // minimum distance for swipe
+
+    if (Math.abs(diff) > threshold) {
+      const currentIndex = teamMembers.findIndex(member => member.name === selectedMember.name)
+      if (diff > 0 && currentIndex < teamMembers.length - 1) {
+        // Swipe left
+        setSelectedMember(teamMembers[currentIndex + 1])
+      } else if (diff < 0 && currentIndex > 0) {
+        // Swipe right
+        setSelectedMember(teamMembers[currentIndex - 1])
+      }
+    }
+  }
+
+  const navigateTeam = (direction: 'prev' | 'next') => {
+    const currentIndex = teamMembers.findIndex(member => member.name === selectedMember.name)
+    if (direction === 'prev' && currentIndex > 0) {
+      setSelectedMember(teamMembers[currentIndex - 1])
+    } else if (direction === 'next' && currentIndex < teamMembers.length - 1) {
+      setSelectedMember(teamMembers[currentIndex + 1])
+    }
+  }
 
   return (
     <motion.section 
@@ -40,25 +71,25 @@ export function WhoWeAre() {
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="px-6 py-24 bg-[#ffda00]"
+      className="px-6 py-16 md:py-24 bg-[#ffda00]"
     >
       <div className="max-w-7xl mx-auto">
         <motion.div 
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="flex items-center justify-center gap-4 mb-16"
+          className="flex items-center justify-center gap-4 mb-12 md:mb-16"
         >
-          <div className="h-px bg-black/20 w-24"></div>
-          <span className="bg-white px-4 py-1 rounded-full text-sm font-medium">WHO WE ARE</span>
-          <div className="h-px bg-black/20 w-24"></div>
+          <div className="hidden md:block h-px bg-black/20 w-24"></div>
+          <span className="bg-white px-6 py-2 rounded-full text-sm font-medium">WHO WE ARE</span>
+          <div className="hidden md:block h-px bg-black/20 w-24"></div>
         </motion.div>
 
         <motion.h2 
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ delay: 0.4, duration: 0.5 }}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 max-w-5xl mx-auto"
+          className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-6 md:mb-8 max-w-5xl mx-auto"
         >
           Dedicated to helping founders launch & scale AI-first B2B SaaS startups
         </motion.h2>
@@ -67,7 +98,7 @@ export function WhoWeAre() {
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="text-center max-w-3xl mx-auto mb-16 text-lg"
+          className="text-center max-w-3xl mx-auto mb-12 md:mb-16 text-base md:text-lg"
         >
           Molus is a venture studio dedicated to helping founders launch and scale AI-first B2B SaaS startups. 
           We manage the entire product development lifecycle—from design to deployment—so you can focus on closing deals, 
@@ -78,16 +109,25 @@ export function WhoWeAre() {
           initial={{ y: 20, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          className="grid grid-cols-1 gap-8"
         >
-          <div className="bg-black rounded-3xl overflow-hidden lg:col-span-2 flex flex-col md:flex-row">
-            <div className="p-8 md:w-1/2 flex flex-col justify-between">
+          <div 
+            className="bg-black rounded-3xl overflow-hidden flex flex-col md:flex-row relative"
+            style={{ maxHeight: '600px' }}
+          >
+            <div 
+              className="p-6 md:p-8 md:w-1/2 flex flex-col justify-between"
+              onTouchStart={handleDragStart}
+              onTouchEnd={handleDragEnd}
+              onMouseDown={handleDragStart}
+              onMouseUp={handleDragEnd}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={selectedMember.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  exit={{ opacity: 0, y: -20 }}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex items-center gap-2 mb-4">
@@ -107,12 +147,28 @@ export function WhoWeAre() {
                   </div>
                 </motion.div>
               </AnimatePresence>
-              <div className="space-y-4 mt-8">
+
+              {/* Mobile Navigation Dots */}
+              <div className="flex justify-center gap-2 mt-6 md:hidden">
+                {teamMembers.map((member, index) => (
+                  <button
+                    key={member.name}
+                    onClick={() => setSelectedMember(member)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      selectedMember.name === member.name ? 'bg-[#ffda00] w-4' : 'bg-white/30'
+                    }`}
+                    aria-label={`Select ${member.name}`}
+                  />
+                ))}
+              </div>
+
+              {/* Desktop Team Member List */}
+              <div className="hidden md:flex flex-col space-y-4 mt-8">
                 {teamMembers.map((member) => (
                   <motion.button
                     key={member.name}
                     onClick={() => setSelectedMember(member)}
-                    className={`text-left w-full ${
+                    className={`text-left ${
                       selectedMember.name === member.name
                         ? 'text-white font-bold'
                         : 'text-[#8f96a3] hover:text-white/80'
@@ -125,14 +181,37 @@ export function WhoWeAre() {
                 ))}
               </div>
             </div>
+
+            {/* Navigation Arrows */}
+            <div className="absolute left-4 right-4 top-1/2 -translate-y-1/2 flex justify-between pointer-events-none z-10">
+              <button
+                onClick={() => navigateTeam('prev')}
+                className={`p-2 rounded-full bg-black/50 backdrop-blur-sm pointer-events-auto transition-opacity ${
+                  teamMembers[0].name === selectedMember.name ? 'opacity-0' : 'opacity-100'
+                }`}
+                disabled={teamMembers[0].name === selectedMember.name}
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+              <button
+                onClick={() => navigateTeam('next')}
+                className={`p-2 rounded-full bg-black/50 backdrop-blur-sm pointer-events-auto transition-opacity ${
+                  teamMembers[teamMembers.length - 1].name === selectedMember.name ? 'opacity-0' : 'opacity-100'
+                }`}
+                disabled={teamMembers[teamMembers.length - 1].name === selectedMember.name}
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+            </div>
+
             <AnimatePresence mode="wait">
               <motion.div
                 key={selectedMember.name}
                 initial={{ opacity: 0 }}
-                animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="md:w-1/2 relative h-[600px]"
+                className="md:w-1/2 h-[300px] md:h-[500px]"
               >
                 <Image
                   src={selectedMember.image}

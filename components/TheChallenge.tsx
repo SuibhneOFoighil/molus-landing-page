@@ -53,9 +53,9 @@ export function TheChallenge() {
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-center gap-4 mb-16">
-          <div className="h-px bg-black/20 w-24"></div>
-          <span className="bg-white px-4 py-1 rounded-full text-sm font-medium">THE CHALLENGE</span>
-          <div className="h-px bg-black/20 w-24"></div>
+          <div className="hidden md:block h-px bg-black/20 w-24"></div>
+          <span className="bg-white px-6 py-2 rounded-full text-sm font-medium">THE CHALLENGE</span>
+          <div className="hidden md:block h-px bg-black/20 w-24"></div>
         </div>
 
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 max-w-4xl mx-auto">
@@ -71,51 +71,54 @@ export function TheChallenge() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-24"
+          className="relative"
         >
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-              className={`transform ${testimonial.rotate} transition-transform`}
-            >
+          <div className="absolute left-0 right-0 bottom-0 h-24 bg-gradient-to-t from-[#fec5c9] to-transparent pointer-events-none md:hidden" />
+          <div className="flex overflow-x-auto pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 scrollbar-hide">
+            {testimonials.map((testimonial, index) => (
               <motion.div
-                className="rounded-3xl p-6 h-full flex flex-col justify-between shadow-lg"
-                style={{ backgroundColor: testimonial.color }}
-                whileHover={{ 
-                  scale: 1.05, 
-                  boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
-                  transition: { duration: 0.3 }
-                }}
-                whileTap={{ scale: 0.95 }}
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
+                className={`flex-shrink-0 w-[85vw] md:w-auto transform ${testimonial.rotate} transition-transform snap-center mr-4 md:mr-0`}
               >
-                <motion.p 
-                  className="text-black text-lg font-medium mb-8"
-                  whileHover={{ scale: 1.02 }}
+                <motion.div
+                  className="rounded-3xl p-6 h-full flex flex-col justify-between shadow-lg"
+                  style={{ backgroundColor: testimonial.color }}
+                  whileHover={{ 
+                    scale: 1.05, 
+                    boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
+                    transition: { duration: 0.3 }
+                  }}
+                  whileTap={{ scale: 0.95 }}
                 >
-                  {testimonial.quote}
-                </motion.p>
-                <motion.div 
-                  className="flex items-center gap-3"
-                  whileHover={{ x: 5 }}
-                >
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
-                  <div>
-                    <h3 className="font-medium text-black">{testimonial.name}</h3>
-                    <p className="text-sm text-black/80">{testimonial.title}</p>
-                  </div>
+                  <motion.p 
+                    className="text-black text-lg font-medium mb-8"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    {testimonial.quote}
+                  </motion.p>
+                  <motion.div 
+                    className="flex items-center gap-3"
+                    whileHover={{ x: 5 }}
+                  >
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      width={48}
+                      height={48}
+                      className="rounded-full"
+                    />
+                    <div>
+                      <h3 className="font-medium text-black">{testimonial.name}</h3>
+                      <p className="text-sm text-black/80">{testimonial.title}</p>
+                    </div>
+                  </motion.div>
                 </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </motion.div>
       </div>
     </motion.section>

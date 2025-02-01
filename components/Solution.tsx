@@ -80,9 +80,9 @@ export function Solution() {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="flex items-center justify-center gap-4 mb-16"
         >
-          <div className="h-px bg-white/20 w-24"></div>
-          <span className="bg-white/10 px-4 py-1 rounded-full text-sm font-medium">HOW MOLUS SOLVES THIS</span>
-          <div className="h-px bg-white/20 w-24"></div>
+          <div className="hidden md:block h-px bg-white/20 w-24"></div>
+          <span className="bg-white/10 px-6 py-2 rounded-full text-sm font-medium">HOW MOLUS SOLVES THIS</span>
+          <div className="hidden md:block h-px bg-white/20 w-24"></div>
         </motion.div>
 
         <motion.h2 

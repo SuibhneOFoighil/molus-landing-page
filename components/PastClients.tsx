@@ -89,14 +89,14 @@ interface AnimatedComponentProps {
 const SectionHeader = ({ isInView }: AnimatedComponentProps) => (
   <>
     <motion.div 
-      initial={ANIMATION_CONFIG.fadeUp.initial}
-      animate={isInView ? ANIMATION_CONFIG.fadeUp.animate : ANIMATION_CONFIG.fadeUp.initial}
-      transition={{ delay: 0.2, ...ANIMATION_CONFIG.fadeUp.transition }}
+      initial={{ y: 20, opacity: 0 }}
+      animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+      transition={{ delay: 0.2, duration: 0.5 }}
       className="flex items-center justify-center gap-4 mb-8"
     >
-      <div className="h-px bg-black/20 w-24" />
-      <span className="bg-[#e2d210] px-4 py-1 rounded-full text-sm font-medium">PAST CLIENTS</span>
-      <div className="h-px bg-black/20 w-24" />
+      <div className="hidden md:block h-px bg-black/20 w-24" />
+      <span className="bg-[#e2d210] px-6 py-2 rounded-full text-sm font-medium">PAST CLIENTS</span>
+      <div className="hidden md:block h-px bg-black/20 w-24" />
     </motion.div>
     
     {/* Victory laurel icon */}
@@ -164,7 +164,7 @@ const LogoColumn = ({ logos, index, currentTime, onHover }: LogoColumnProps) => 
         <Link href="/casestudies" className="block">
           <motion.div
             key={`${currentLogo.id}-${currentIndex}`}
-            className="group bg-[#fffdf0] rounded-full px-6 md:px-12 py-4 md:py-6 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 ease-out cursor-pointer mx-auto"
+            className="group bg-[#fffdf0] rounded-full px-4 md:px-12 py-6 md:py-6 hover:-translate-y-2 hover:shadow-lg transition-all duration-300 ease-out cursor-pointer mx-auto"
             style={{ maxWidth: '90vw' }}
             onMouseEnter={() => onHover(true)}
             onMouseLeave={() => onHover(false)}
@@ -192,7 +192,7 @@ const LogoColumn = ({ logos, index, currentTime, onHover }: LogoColumnProps) => 
                 alt={currentLogo.name}
                 width={224}
                 height={80}
-                className="h-12 w-32 md:h-16 md:w-40 lg:h-20 lg:w-56 object-contain grayscale brightness-50 contrast-125 transition-all duration-300 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100"
+                className="h-16 w-48 md:h-16 md:w-40 lg:h-20 lg:w-56 object-contain opacity-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-105"
               />
             </div>
           </motion.div>
