@@ -34,12 +34,18 @@ export function WhoWeAre() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
   const [dragStart, setDragStart] = useState(0)
 
-  const handleDragStart = (event: any) => {
-    setDragStart(event.pageX || event.touches[0].pageX)
+  const handleDragStart = (event: TouchEvent | MouseEvent) => {
+    if ('touches' in event) {
+      setDragStart(event.touches[0].pageX)
+    } else {
+      setDragStart(event.pageX)
+    }
   }
 
-  const handleDragEnd = (event: any) => {
-    const dragEnd = event.pageX || event.changedTouches[0].pageX
+  const handleDragEnd = (event: TouchEvent | MouseEvent) => {
+    const dragEnd = 'changedTouches' in event 
+      ? event.changedTouches[0].pageX 
+      : event.pageX
     const diff = dragStart - dragEnd
     const threshold = 50 // minimum distance for swipe
 
@@ -117,10 +123,10 @@ export function WhoWeAre() {
           >
             <div 
               className="p-6 md:p-8 md:w-1/2 flex flex-col justify-between"
-              onTouchStart={handleDragStart}
-              onTouchEnd={handleDragEnd}
-              onMouseDown={handleDragStart}
-              onMouseUp={handleDragEnd}
+              onTouchStart={(e) => handleDragStart(e.nativeEvent)}
+              onTouchEnd={(e) => handleDragEnd(e.nativeEvent)}
+              onMouseDown={(e) => handleDragStart(e.nativeEvent)}
+              onMouseUp={(e) => handleDragEnd(e.nativeEvent)}
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -150,7 +156,7 @@ export function WhoWeAre() {
 
               {/* Mobile Navigation Dots */}
               <div className="flex justify-center gap-2 mt-6 md:hidden">
-                {teamMembers.map((member, index) => (
+                {teamMembers.map((member) => (
                   <button
                     key={member.name}
                     onClick={() => setSelectedMember(member)}
