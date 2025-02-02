@@ -49,8 +49,10 @@ function StatCard({ title, description, delay, isInView }: StatCardProps) {
 }
 
 export function Solution() {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.3 })
+  const firstSectionRef = useRef(null)
+  const secondSectionRef = useRef(null)
+  const isFirstSectionInView = useInView(firstSectionRef, { once: true, amount: 0.3 })
+  const isSecondSectionInView = useInView(secondSectionRef, { once: true, amount: 0.3 })
 
   const stats = [
     {
@@ -69,36 +71,37 @@ export function Solution() {
     {
       title: "Unlimited Low-Code/No-Code Tools",
       description: "Quickly prototype AI-driven features without deep dev expertise",
-      color: "rgba(18, 199, 224, 0.3)", // Blue at 30% opacity
+      color: "rgba(18, 199, 224, 0.5)", // Blue at 50% opacity
       delay: 1.8
     },
     {
       title: "Step-by-Step Tutorials",
       description: "Integrate AI seamlessly into your product with clear, guided lessons",
-      color: "rgba(14, 229, 116, 0.3)", // Green at 30% opacity
+      color: "rgba(14, 229, 116, 0.5)", // Green at 50% opacity
       delay: 2.1
     },
     {
       title: "Community of Founders",
       description: "Connect with peers launching AI-first solutions for shared insights",
-      color: "rgba(220, 100, 226, 0.3)", // Purple at 30% opacity
+      color: "rgba(220, 100, 226, 0.5)", // Purple at 50% opacity
       delay: 2.4
     }
   ]
 
   return (
-    <div ref={ref}>
+    <div>
       {/* First Section - Black background */}
       <motion.section 
+        ref={firstSectionRef}
         initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        animate={isFirstSectionInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.5 }}
         className="px-6 py-24 bg-black text-white relative"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            animate={isFirstSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="flex items-center justify-center gap-4 mb-16"
           >
@@ -109,7 +112,7 @@ export function Solution() {
 
           <motion.h2 
             initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            animate={isFirstSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 max-w-4xl mx-auto"
           >
@@ -118,7 +121,7 @@ export function Solution() {
 
           <motion.p 
             initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            animate={isFirstSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
             className="text-center max-w-2xl mx-auto mb-24 text-lg text-white/80"
           >
@@ -133,7 +136,7 @@ export function Solution() {
                 title={stat.title}
                 description={stat.description}
                 delay={stat.delay}
-                isInView={isInView}
+                isInView={isFirstSectionInView}
               />
             ))}
           </div>
@@ -142,16 +145,28 @@ export function Solution() {
 
       {/* Second Section - Same black background */}
       <motion.section 
+        ref={secondSectionRef}
         initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+        animate={isSecondSectionInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="px-6 py-24 bg-black text-white relative"
+        className="px-6 py-24 bg-black text-white relative overflow-hidden"
       >
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full opacity-[0.03] mix-blend-screen pointer-events-none"
+          style={{
+            backgroundImage: 'url("/images/wave-background.png")',
+            backgroundSize: 'calc(400px + 5vw)',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'repeat',
+          }}
+        />
+        
         <div className="max-w-7xl mx-auto relative">
           <motion.h2 
             initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
+            animate={isSecondSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}  // Reset delay to start sooner
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 max-w-4xl mx-auto"
           >
             Free Access to Our AI-First Platform
@@ -159,8 +174,8 @@ export function Solution() {
 
           <motion.p 
             initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-            transition={{ delay: 1.4, duration: 0.5 }}
+            animate={isSecondSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}  // Reset delay to start sooner
             className="text-center max-w-2xl mx-auto mb-24 text-lg text-white/80"
           >
             Empower your startup with ready-to-use low-code/no-code AI tools and a thriving community.
@@ -171,20 +186,23 @@ export function Solution() {
               <motion.div
                 key={index}
                 initial={{ y: 20, opacity: 0 }}
-                animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                transition={{ delay: benefit.delay, duration: 0.5 }}
-                className="relative rounded-[24px] p-8 h-full"
-                style={{ backgroundColor: benefit.color }}
+                animate={isSecondSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+                transition={{ delay: 0.6 + (index * 0.2), duration: 0.5 }}  // Reset delays to start sooner
+                className="relative rounded-[24px] p-8 h-full bg-opacity-100"
+                style={{ 
+                  backgroundColor: benefit.color,
+                  backdropFilter: 'none'
+                }}
               >
                 {/* Masked Line Animation Container */}
                 <div className="absolute left-0 top-0 w-full h-full overflow-hidden rounded-[24px]">
                   <motion.div
                     initial={{ scaleY: 0 }}
-                    animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+                    animate={isSecondSectionInView ? { scaleY: 1 } : { scaleY: 0 }}
                     transition={{ 
-                      delay: benefit.delay + 0.4, 
+                      delay: 0.8 + (index * 0.2), 
                       duration: 0.5,
-                      ease: [0.215, 0.61, 0.355, 1] // Custom easing for smoother animation
+                      ease: [0.215, 0.61, 0.355, 1]
                     }}
                     className="absolute left-0 top-0 w-[3px] h-full bg-white/40 origin-top"
                   />
@@ -202,7 +220,7 @@ export function Solution() {
 
           <motion.p
             initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
+            animate={isSecondSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ delay: 2.7, duration: 0.5 }}
             className="text-center max-w-2xl mx-auto mt-16 mb-8 text-lg text-white/80"
           >
