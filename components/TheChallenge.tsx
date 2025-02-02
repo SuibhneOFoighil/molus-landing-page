@@ -43,6 +43,51 @@ export function TheChallenge() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
+  const rotations = [3, -4, 2, -3] // Desktop rotations
+
+  // Animation variants for staggered children
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.4, // Increased delay between cards (was 0.15)
+        delayChildren: 0.3,   // Initial delay
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 20,
+      scale: 0.95,
+    },
+    show: (index: number) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: rotations[index],
+      transition: {
+        duration: 0.5,
+        ease: [0.23, 1.12, 0.25, 1], // Spring-like easing
+        opacity: { duration: 0.4 },
+      }
+    })
+  }
+
+  // Modified hover animation for card-like feel
+  const hoverAnimation = {
+    scale: 1.05,
+    y: -5,
+    zIndex: 10,
+    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    transition: {
+      duration: 0.2,
+      ease: "easeOut"
+    }
+  }
+
   return (
     <motion.section 
       ref={ref}
@@ -59,38 +104,86 @@ export function TheChallenge() {
         </div>
 
         <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 max-w-4xl mx-auto">
-          Building software is prohibitively expensive, with costs ranging from $100k–$200k
+          Building software often costs $100k–$200k
         </h2>
 
         <p className="text-center max-w-2xl mx-auto mb-16 text-lg">
-          Without technical expertise, many founders struggle to find affordable, high-quality development options. 
-          For many, this creates a dead end before their vision has a chance to succeed.
+          Without in-house technical expertise, many founders find it impossible to secure affordable, high-quality development. 
+          This can derail promising ideas before they ever go to market.
         </p>
 
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
           className="relative"
         >
-          <div className="absolute left-0 right-0 bottom-0 h-24 bg-gradient-to-t from-[#fec5c9] to-transparent pointer-events-none md:hidden" />
-          <div className="flex overflow-x-auto pb-8 -mx-6 px-6 snap-x snap-mandatory md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 scrollbar-hide">
+          {/* Mobile and Tablet Layout */}
+          <div className="xl:hidden">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  variants={cardVariants}
+                  className="transform"
+                  style={{
+                    position: 'relative',
+                    top: `${index % 2 === 0 ? -5 : 5}px`,
+                  }}
+                >
+                  <motion.div
+                    className="rounded-3xl p-6 shadow-lg h-full"
+                    style={{ backgroundColor: testimonial.color }}
+                    whileHover={hoverAnimation}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <motion.p 
+                      className="text-black text-lg font-medium mb-8"
+                      whileHover={{ scale: 1.02 }}
+                    >
+                      {testimonial.quote}
+                    </motion.p>
+                    <motion.div 
+                      className="flex items-center gap-3"
+                      whileHover={{ x: 5 }}
+                    >
+                      <Image
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        width={48}
+                        height={48}
+                        className="rounded-full"
+                      />
+                      <div>
+                        <h3 className="font-medium text-black">{testimonial.name}</h3>
+                        <p className="text-sm text-black/80">{testimonial.title}</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden xl:flex xl:gap-0 xl:justify-center xl:items-center xl:-mx-4">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                className={`flex-shrink-0 w-[85vw] md:w-auto transform ${testimonial.rotate} transition-transform snap-center mr-4 md:mr-0`}
+                custom={index}
+                variants={cardVariants}
+                className="transform w-[320px] -ml-4 first:ml-0"
+                style={{
+                  position: 'relative',
+                  top: `${index % 2 === 0 ? -10 : 10}px`,
+                  zIndex: index === 0 ? 4 : 4 - index
+                }}
               >
                 <motion.div
-                  className="rounded-3xl p-6 h-full flex flex-col justify-between shadow-lg"
+                  className="rounded-3xl p-6 shadow-lg h-full"
                   style={{ backgroundColor: testimonial.color }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
-                    transition: { duration: 0.3 }
-                  }}
+                  whileHover={hoverAnimation}
                   whileTap={{ scale: 0.95 }}
                 >
                   <motion.p 
