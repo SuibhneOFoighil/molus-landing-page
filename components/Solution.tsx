@@ -187,8 +187,13 @@ export function Solution() {
                 key={index}
                 initial={{ y: 20, opacity: 0 }}
                 animate={isSecondSectionInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-                transition={{ delay: 0.6 + (index * 0.2), duration: 0.5 }}  // Reset delays to start sooner
-                className="relative rounded-[24px] p-8 h-full bg-opacity-100"
+                whileHover={{ 
+                  y: -5,
+                  scale: 1.02,
+                  transition: { duration: 0.2 }
+                }}
+                transition={{ delay: 0.6 + (index * 0.2), duration: 0.5 }}
+                className="relative rounded-[24px] p-8 h-full bg-opacity-100 group cursor-pointer"
                 style={{ 
                   backgroundColor: benefit.color,
                   backdropFilter: 'none'
@@ -208,10 +213,10 @@ export function Solution() {
                   />
                 </div>
                 
-                <h3 className="text-[28px] font-bold mb-4 text-white">
+                <h3 className="text-[28px] font-bold mb-4 text-white transition-transform duration-200 group-hover:translate-x-1">
                   {benefit.title}
                 </h3>
-                <p className="text-[18px] leading-relaxed text-white/80">
+                <p className="text-[18px] leading-relaxed text-white/80 transition-transform duration-200 group-hover:translate-x-1">
                   {benefit.description}
                 </p>
               </motion.div>
