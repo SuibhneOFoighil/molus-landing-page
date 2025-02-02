@@ -1,57 +1,71 @@
 export function Background() {
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {/* Base background - using a gradient instead of solid black */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black" />
+      {/* Base background with improved gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-black/90" />
       
-      {/* Green ellipse - moved higher and made larger for more top coverage */}
+      {/* Primary green glow */}
       <div 
-        className="absolute w-[500px] h-[500px] -left-[110px] top-[-100px]"
+        className="absolute w-[600px] h-[600px] -left-[110px] top-[-150px]"
         style={{
-          background: '#0EE574',
-          filter: 'blur(130px)',
-          opacity: '0.7',
+          background: 'linear-gradient(135deg, rgba(14, 229, 116, 0.7), rgba(14, 229, 116, 0.3))',
+          filter: 'blur(140px)',
+          transform: 'rotate(-5deg)',
         }}
       />
       
-      {/* Blue ellipse 1 */}
+      {/* Dynamic blue ellipse */}
       <div 
-        className="absolute w-[756px] h-[756px] -left-[100px] top-[340px]"
+        className="absolute w-[800px] h-[800px] -left-[100px] top-[340px]"
         style={{
-          background: '#12C7E0',
+          background: 'radial-gradient(circle, rgba(18, 199, 224, 0.6), rgba(18, 199, 224, 0.2))',
           filter: 'blur(130px)',
-          opacity: '0.6',
         }}
       />
       
-      {/* Yellow ellipse */}
+      {/* Energetic yellow glow */}
       <div 
-        className="absolute w-[756px] h-[756px] left-[380px] top-[560px]"
+        className="absolute w-[800px] h-[800px] left-[380px] top-[560px]"
         style={{
-          background: '#E2D210',
-          filter: 'blur(130px)',
-          opacity: '0.5',
+          background: 'linear-gradient(45deg, rgba(226, 210, 16, 0.5), rgba(226, 210, 16, 0.2))',
+          filter: 'blur(140px)',
+          transform: 'rotate(15deg)',
         }}
       />
       
-      {/* Blue ellipse 2 */}
+      {/* Secondary blue accent */}
       <div 
-        className="absolute w-[378px] h-[378px] left-[979px] top-[670px]"
+        className="absolute w-[450px] h-[450px] left-[979px] top-[670px]"
         style={{
-          background: '#12C7E0',
+          background: 'radial-gradient(circle, rgba(18, 199, 224, 0.5), rgba(18, 199, 224, 0.1))',
           filter: 'blur(130px)',
-          opacity: '0.6',
         }}
       />
       
-      {/* Semi-transparent overlay with backdrop blur - reduced opacity */}
+      {/* Subtle grid overlay for depth */}
+      <div 
+        className="absolute inset-0 opacity-20"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                           linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+        }}
+      />
+
+      {/* Refined glass effect overlay */}
       <div 
         className="absolute inset-0"
         style={{
-          background: 'rgba(0, 0, 0, 0.2)',
-          backdropFilter: 'blur(32.5px)',
+          background: 'rgba(0, 0, 0, 0.15)',
+          backdropFilter: 'blur(40px)',
         }}
       />
     </div>
   )
-} 
+}
+
+// Add these animations to your globals.css or tailwind.config.js
+// @keyframes float {
+//   0%, 100% { transform: translateY(0px); }
+//   50% { transform: translateY(-20px); }
+// } 
