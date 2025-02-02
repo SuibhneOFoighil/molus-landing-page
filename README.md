@@ -29,36 +29,67 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 ## 🏗️ Project Structure
 
 ```
-/
-├── app/                # Next.js app directory
-│   ├── api/           # API routes
-│   │   └── contact/   # Email handling endpoint
-│   ├── casestudies/   # Case studies page
-│   ├── fonts/         # Font configuration
-│   ├── fonts.ts       # Font imports
-│   ├── globals.css    # Global styles
-│   ├── layout.tsx     # Root layout
-│   └── page.tsx       # Home page
-├── components/         # React components
-│   ├── Hero.tsx       # Main landing section
-│   ├── Navigation.tsx # Site navigation
-│   ├── PastClients.tsx # Client showcase
-│   ├── PilotProgram.tsx # Pilot program section
-│   ├── Solution.tsx    # Solution showcase
-│   ├── TheChallenge.tsx # Challenge section
-│   ├── WhoWeAre.tsx    # Team section
-│   ├── ContactForm.tsx # Contact form
-│   ├── Footer.tsx     # Site footer
-│   └── ui/            # Reusable UI components
-├── lib/               # Utility functions
-│   └── utils.ts       # Shared utilities
-├── public/            # Static assets
-│   └── images/        # Image assets
-└── config/            # Configuration files
-    ├── next.config.mjs     # Next.js config
-    ├── tailwind.config.ts  # Tailwind config
-    ├── postcss.config.mjs  # PostCSS config
-    └── components.json     # UI components config
+├── .eslintrc.json
+├── .gitignore
+├── README.md
+├── app
+    ├── api
+    │   └── contact
+    │   │   └── route.ts
+    ├── casestudies
+    │   └── page.tsx
+    ├── favicon.ico
+    ├── fonts.ts
+    ├── fonts
+    │   ├── GeistMonoVF.woff
+    │   └── GeistVF.woff
+    ├── globals.css
+    ├── layout.tsx
+    └── page.tsx
+├── components.json
+├── components
+    ├── ContactForm.tsx
+    ├── Footer.tsx
+    ├── Hero.tsx
+    ├── Navigation.tsx
+    ├── PastClients.tsx
+    ├── PilotProgram.tsx
+    ├── Solution.tsx
+    ├── TheChallenge.tsx
+    ├── WhoWeAre.tsx
+    └── ui
+    │   ├── background.tsx
+    │   ├── button.tsx
+    │   ├── input.tsx
+    │   ├── sheet.tsx
+    │   └── textarea.tsx
+├── lib
+    └── utils.ts
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── public
+    └── images
+    │   ├── Molus_Logo_Horizontal_White.png
+    │   ├── akhila.jpeg
+    │   ├── chat1.png
+    │   ├── chat2.png
+    │   ├── chat3.png
+    │   ├── ludus_logo.png
+    │   ├── m12_logo.png
+    │   ├── moseslee.jpeg
+    │   ├── mscreen_logo.jpeg
+    │   ├── nsf_logo.png
+    │   ├── placeholder.svg
+    │   ├── rxplora_logo.png
+    │   ├── spark_logo.png
+    │   ├── suibhne.jpeg
+    │   ├── umich_logo.png
+    │   ├── victory.svg
+    │   └── wave-background.png
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
 ## 🎨 Tech Stack
@@ -71,93 +102,3 @@ A modern, responsive landing page built with Next.js 14, TypeScript, and Tailwin
 - [Radix UI](https://www.radix-ui.com/) - UI components
 - [Lucide React](https://lucide.dev/) - Icons
 - [Nodemailer](https://nodemailer.com/) - Email handling
-
-## 💫 Component Features
-
-### Navigation Component
-- 🔄 Smooth scroll navigation to sections
-- 📱 Responsive mobile menu
-- 🎯 Fixed header with hide/show on scroll
-- 💫 Animated transitions
-
-### Hero Component
-- 🎨 Dynamic gradient background
-- 💫 Staggered fade-in animations
-- 📱 Responsive text sizing
-- 🔄 Interactive CTA button with smooth scroll
-
-### PastClients Component
-- 🔄 Animated logo carousel
-- ⏸️ Hover-to-pause interaction
-- 🎨 Grayscale-to-color transition
-- 📱 Responsive column layout
-- ⚡️ Performance optimized with React hooks
-- 🔗 Interactive logos linking to case studies
-
-### Case Studies Page
-- 🎨 Consistent dark theme design
-- 💫 Smooth animations and transitions
-- 🔙 Context-aware back navigation
-- 🎯 Smooth scroll to previous section
-- 🌟 Dynamic icon with gradient effect
-
-### WhoWeAre Component
-```typescript
-interface TeamMember {
-  name: string;
-  role: string;
-  image: string;
-  linkedin: string;
-  website?: string;
-}
-```
-
-**Key Dependencies:**
-- framer-motion: Handles animations and transitions
-- lucide-react: Provides LinkedIn and Globe icons
-- next/image: Optimized image handling
-
-**State Management:**
-- Uses useState for selected team member tracking
-- useInView hook for scroll-based animations
-
-**Implementation Notes:**
-- AnimatePresence manages mount/unmount transitions
-- Image dimensions standardized to 600x600px
-- Mobile-first responsive layout using Tailwind breakpoints
-- Social links support both LinkedIn and optional website URLs
-
-**Usage Example:**
-```tsx
-<WhoWeAre />  // No props required - team data is internal
-```
-
-**Key Files:**
-- components/WhoWeAre.tsx - Main component
-- public/images/* - Team member images (600x600px recommended)
-
-### ContactForm Component
-- 💫 Animated form fields
-- 🎨 Modern messaging UI preview
-- 📱 Responsive layout
-- ✨ Interactive submit button
-- 📧 Direct email submission via Nodemailer
-- 🔔 Success/error notifications
-- 🔄 Form state management
-- 🛡️ Server-side email handling
-
-**Email Configuration:**
-```typescript
-// Required environment variables
-EMAIL_USER=your-email@gmail.com    // Gmail address
-EMAIL_PASS=your-app-password       // Gmail app-specific password
-```
-
-**Implementation Notes:**
-- Uses Next.js API routes for secure email handling
-- Gmail SMTP integration via Nodemailer
-- Proper error handling and user feedback
-- Form validation and sanitization
-- Responsive success/error notifications
-
-The components use a column-based distribution system for logos and implement pause-on-hover functionality for better user interaction. Each component is built with accessibility and performance in mind, utilizing TypeScript for type safety and Framer Motion for smooth animations.
