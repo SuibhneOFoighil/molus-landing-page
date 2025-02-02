@@ -26,9 +26,9 @@ const testimonials = [
     rotate: "rotate-[-2deg]"
   },
   {
-    quote: "Our MVP cost $150,000, nearly derailing our startup before launch...",
+    quote: "We burned through $180,000 on failed development attempts before finding the right solution...",
     name: "Kamal Chase",
-    title: "CEO CloudData",
+    title: "CEO, TechFlow",
     color: "#e2d210",
     rotate: "rotate-[4deg]"
   }
