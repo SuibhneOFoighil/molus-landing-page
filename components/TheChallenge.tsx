@@ -46,8 +46,8 @@ export function TheChallenge() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.4, // Increased delay between cards (was 0.15)
-        delayChildren: 0.3,   // Initial delay
+        staggerChildren: 0.25,
+        delayChildren: 0,
       }
     }
   }
@@ -64,9 +64,9 @@ export function TheChallenge() {
       scale: 1,
       rotate: rotations[index],
       transition: {
-        duration: 0.5,
-        ease: [0.23, 1.12, 0.25, 1], // Spring-like easing
-        opacity: { duration: 0.4 },
+        duration: 0.3,
+        ease: [0.23, 1.12, 0.25, 1],
+        opacity: { duration: 0.2 },
       }
     })
   }

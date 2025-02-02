@@ -217,14 +217,14 @@ export function WhoWeAre() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="md:w-1/2 h-[300px] md:h-[500px]"
+                className="md:w-1/2 h-[360px] md:h-[600px]"
               >
                 <Image
                   src={selectedMember.image}
                   alt={selectedMember.name}
                   width={600}
                   height={600}
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-center"
                 />
               </motion.div>
             </AnimatePresence>
