@@ -101,18 +101,27 @@ const SectionHeader = ({ isInView }: AnimatedComponentProps) => (
     
     {/* Victory laurel icon */}
     <motion.div 
-      initial={{ scale: 0, rotate: -45 }}
-      animate={isInView ? { scale: 1, rotate: 0 } : { scale: 0, rotate: -45 }}
-      transition={{ delay: 0.4, duration: 0.5, type: "spring", stiffness: 200 }}
-      className="flex justify-center mb-8"
+      className="flex justify-center mb-8 relative h-[160px] md:h-[128px] overflow-hidden"
     >
-      <Image
-        src="/images/victory.svg"
-        alt="Victory laurel"
-        width={128}
-        height={128}
-        className="w-24 h-24 md:w-32 md:h-32 text-black/80"
-      />
+      <div className="relative w-32 h-32 md:w-32 md:h-32">
+        <Image
+          src="/images/victory.svg"
+          alt="Victory laurel"
+          width={128}
+          height={128}
+          className="w-32 h-32 md:w-32 md:h-32 text-black/80"
+        />
+        <motion.div
+          className="absolute inset-0 bg-white"
+          initial={{ y: 0 }}
+          animate={isInView ? { y: '-100%' } : { y: 0 }}
+          transition={{ 
+            delay: 0.4,
+            duration: 0.8,
+            ease: [0.25, 0.1, 0.25, 1], // Custom easing for smooth reveal
+          }}
+        />
+      </div>
     </motion.div>
 
     {/* Section title and description */}
