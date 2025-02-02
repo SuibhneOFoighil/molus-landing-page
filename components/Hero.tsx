@@ -37,9 +37,13 @@ const ANIMATION_CONFIG = {
  * Centralized here for easy maintenance and updates
  */
 const HERO_CONTENT = {
-  title: "Transform your vision into reality with enterprise quality software at 20x",
-  description: "Dedicated to helping founders launch softwares. Dedicated to helping founders launch softwares. Dedicated to helping founders launch softwares Dedicated to helping founders launch softwares",
-  ctaText: "Apply Now to Join Our Pilot Program"
+  title: "Transform Your Idea into Reality—20x Faster with AI-Powered Development",
+  description: {
+    prefix: "We help founders build ",
+    emphasis: "enterprise-grade",
+    suffix: " software at a fraction of the usual cost. Let us handle the tech so you can focus on growing your startup."
+  },
+  ctaText: "Join our Pilot Program"
 } as const
 
 // Sub-components with clear single responsibilities
@@ -88,7 +92,19 @@ const HeroDescription = ({ isInView }: AnimatedComponentProps) => (
       whileHover={{ scale: 1.01 }}
       transition={{ duration: 0.3 }}
     >
-      {HERO_CONTENT.description}
+      {HERO_CONTENT.description.prefix}
+      <span className="relative inline-block">
+        {HERO_CONTENT.description.emphasis}
+        <span 
+          className="absolute left-0 right-0 bottom-0 h-[2px] bg-gradient-to-r from-[#e2d210]/0 via-[#e2d210] to-[#e2d210]/0"
+          style={{
+            transform: 'translateY(2px) rotate(-1deg)',
+            width: '108%',
+            left: '-4%'
+          }}
+        />
+      </span>
+      {HERO_CONTENT.description.suffix}
     </motion.span>
   </motion.p>
 )
