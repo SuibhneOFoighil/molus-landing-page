@@ -9,7 +9,6 @@ const testimonials = [
     quote: "Our MVP cost $150,000, nearly derailing our startup before launch...",
     name: "Sarah Kelsy",
     title: "CEO, CloudData",
-    image: "/images/placeholder.svg",
     color: "#12c7e0",
     rotate: "rotate-[-4deg]"
   },
@@ -17,7 +16,6 @@ const testimonials = [
     quote: "We faced $200,000 software costs, almost shelving our idea...",
     name: "Jeremy Tulin",
     title: "CEO, Razerpath",
-    image: "/images/placeholder.svg",
     color: "#e8990c",
     rotate: "rotate-[2deg]"
   },
@@ -25,7 +23,6 @@ const testimonials = [
     quote: "Development expenses exceeded two years of operating costs, delaying our launch...",
     name: "Mercy Agnes",
     title: "CEO CloudData",
-    image: "/images/placeholder.svg",
     color: "#0ee574",
     rotate: "rotate-[-2deg]"
   },
@@ -33,7 +30,6 @@ const testimonials = [
     quote: "Our MVP cost $150,000, nearly derailing our startup before launch...",
     name: "Kamal Chase",
     title: "CEO CloudData",
-    image: "/images/placeholder.svg",
     color: "#e2d210",
     rotate: "rotate-[4deg]"
   }
@@ -148,13 +144,21 @@ export function TheChallenge() {
                       className="flex items-center gap-3"
                       whileHover={{ x: 5 }}
                     >
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        width={48}
-                        height={48}
-                        className="rounded-full"
-                      />
+                      <div className="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center flex-shrink-0">
+                        <svg
+                          className="w-6 h-6 text-black/40"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={1.5}
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                          />
+                        </svg>
+                      </div>
                       <div>
                         <h3 className="font-medium text-black">{testimonial.name}</h3>
                         <p className="text-sm text-black/80">{testimonial.title}</p>
@@ -196,13 +200,21 @@ export function TheChallenge() {
                     className="flex items-center gap-3"
                     whileHover={{ x: 5 }}
                   >
-                    <Image
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      width={48}
-                      height={48}
-                      className="rounded-full"
-                    />
+                    <div className="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center flex-shrink-0">
+                      <svg
+                        className="w-6 h-6 text-black/40"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                    </div>
                     <div>
                       <h3 className="font-medium text-black">{testimonial.name}</h3>
                       <p className="text-sm text-black/80">{testimonial.title}</p>
