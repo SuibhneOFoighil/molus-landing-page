@@ -1,44 +1,44 @@
 export function Background() {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 w-full h-full overflow-hidden">
       {/* Base background with improved gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-black/95 to-black/90" />
       
       {/* Primary green glow */}
       <div 
-        className="absolute w-[600px] h-[600px] -left-[110px] top-[-150px]"
+        className="absolute w-[50vmin] h-[50vmin] -left-[10vmin] -top-[10vmin]"
         style={{
           background: 'linear-gradient(135deg, rgba(14, 229, 116, 0.7), rgba(14, 229, 116, 0.3))',
-          filter: 'blur(140px)',
+          filter: 'blur(calc(10vmin))',
           transform: 'rotate(-5deg)',
         }}
       />
       
       {/* Dynamic blue ellipse */}
       <div 
-        className="absolute w-[800px] h-[800px] -left-[100px] top-[340px]"
+        className="absolute w-[60vmin] h-[60vmin] -left-[5vmin] top-[30vh]"
         style={{
           background: 'radial-gradient(circle, rgba(18, 199, 224, 0.6), rgba(18, 199, 224, 0.2))',
-          filter: 'blur(130px)',
+          filter: 'blur(calc(8vmin))',
         }}
       />
       
       {/* Energetic yellow glow */}
       <div 
-        className="absolute w-[800px] h-[800px] left-[380px] top-[560px]"
+        className="absolute w-[60vmin] h-[60vmin] right-[5vmin] top-[50vh]"
         style={{
           background: 'linear-gradient(45deg, rgba(226, 210, 16, 0.5), rgba(226, 210, 16, 0.2))',
-          filter: 'blur(140px)',
+          filter: 'blur(calc(8vmin))',
           transform: 'rotate(15deg)',
         }}
       />
       
       {/* Secondary blue accent */}
       <div 
-        className="absolute w-[450px] h-[450px] left-[979px] top-[670px]"
+        className="absolute w-[40vmin] h-[40vmin] right-[2vmin] bottom-[5vh]"
         style={{
           background: 'radial-gradient(circle, rgba(18, 199, 224, 0.5), rgba(18, 199, 224, 0.1))',
-          filter: 'blur(130px)',
+          filter: 'blur(calc(8vmin))',
         }}
       />
       

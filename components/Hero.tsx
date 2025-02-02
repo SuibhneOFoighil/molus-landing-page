@@ -156,7 +156,7 @@ export function Hero() {
   const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   return (
-    <div className="relative min-h-screen">
+    <section className="relative min-h-screen">
       <Background />
       <motion.main 
         ref={ref}
@@ -170,7 +170,7 @@ export function Hero() {
           <CtaButton isInView={isInView} />
         </div>
       </motion.main>
-    </div>
+    </section>
   )
 }
 
