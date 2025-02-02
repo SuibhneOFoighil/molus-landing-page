@@ -139,29 +139,39 @@ const MobileMenu = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (open: 
                 handleSmoothScroll(e, href)
                 setIsOpen(false)
               }}
-              className="text-lg hover:text-white/80 transition-colors"
+              className="text-lg hover:text-white/80 transition-colors py-3 px-2 -mx-2"
             >
               {label}
             </Link>
           ))}
         </nav>
-        <div className="space-y-4 mt-8">
+        <div className="space-y-6 mt-8">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <Button 
               asChild
-              className="w-full bg-[#e2d210] hover:bg-[#e2d210]/90 text-black font-medium px-6 py-3 text-sm rounded-full transition-all duration-300 hover:shadow-lg"
+              className="w-full bg-[#e2d210] hover:bg-[#e2d210]/90 text-black font-medium px-6 py-4 text-base rounded-full transition-all duration-300 hover:shadow-lg"
               onClick={() => setIsOpen(false)}
             >
-              <Link href="/apply" className="flex items-center justify-center">
-                <span>Apply Now to Join Our Pilot Program</span>
-                <ArrowRight className="ml-2 h-4 w-4" />
+              <Link 
+                href="#contact"
+                onClick={(e) => {
+                  handleSmoothScroll(e, '#contact')
+                  setIsOpen(false)
+                }}
+                className="flex items-center justify-center"
+              >
+                <span>Join our Pilot Program</span>
+                <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
           </motion.div>
-          <ContactButton className="w-full" onClick={() => setIsOpen(false)} />
+          <ContactButton 
+            className="w-full py-4 text-base" 
+            onClick={() => setIsOpen(false)} 
+          />
         </div>
       </motion.div>
     </SheetContent>
