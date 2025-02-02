@@ -65,8 +65,7 @@ export function Footer() {
             transition={{ duration: 0.5, delay: 0.6 }}
             className="space-y-1 text-white/60"
           >
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
-            <p>Velit morbi dolor risus mauris ut lacus vitae.</p>
+            <p>Building enterprise software at startup speed.</p>
           </motion.div>
 
           <motion.div
