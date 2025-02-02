@@ -128,17 +128,80 @@ export function TheChallenge() {
                   }}
                 >
                   <motion.div
-                    className="rounded-3xl p-6 shadow-lg h-full"
+                    className="rounded-3xl p-8 h-[280px] shadow-lg flex flex-col justify-between"
                     style={{ backgroundColor: testimonial.color }}
                     whileHover={hoverAnimation}
                     whileTap={{ scale: 0.95 }}
                   >
                     <motion.p 
-                      className="text-black text-lg font-medium mb-8"
+                      className="text-black text-xl font-medium"
                       whileHover={{ scale: 1.02 }}
                     >
                       {testimonial.quote}
                     </motion.p>
+                    
+                    <div>
+                      <div className="h-px bg-black/10 my-6"></div>
+                      <motion.div 
+                        className="flex items-center gap-3"
+                        whileHover={{ x: 5 }}
+                      >
+                        <div className="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center flex-shrink-0">
+                          <svg
+                            className="w-6 h-6 text-black/40"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1.5}
+                              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-black">{testimonial.name}</h3>
+                          <p className="text-sm text-black/80">{testimonial.title}</p>
+                        </div>
+                      </motion.div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop Layout */}
+          <div className="hidden xl:flex xl:gap-0 xl:justify-center xl:items-center xl:-mx-4">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                custom={index}
+                variants={cardVariants}
+                className="transform w-[320px] -ml-4 first:ml-0"
+                style={{
+                  position: 'relative',
+                  top: `${index % 2 === 0 ? -10 : 10}px`,
+                  zIndex: index === 0 ? 4 : 4 - index
+                }}
+              >
+                <motion.div
+                  className="rounded-3xl p-8 h-[280px] shadow-lg flex flex-col justify-between"
+                  style={{ backgroundColor: testimonial.color }}
+                  whileHover={hoverAnimation}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <motion.p 
+                    className="text-black text-xl font-medium"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    {testimonial.quote}
+                  </motion.p>
+                  
+                  <div>
+                    <div className="h-px bg-black/10 my-6"></div>
                     <motion.div 
                       className="flex items-center gap-3"
                       whileHover={{ x: 5 }}
@@ -163,62 +226,7 @@ export function TheChallenge() {
                         <p className="text-sm text-black/80">{testimonial.title}</p>
                       </div>
                     </motion.div>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop Layout */}
-          <div className="hidden xl:flex xl:gap-0 xl:justify-center xl:items-center xl:-mx-4">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                custom={index}
-                variants={cardVariants}
-                className="transform w-[320px] -ml-4 first:ml-0"
-                style={{
-                  position: 'relative',
-                  top: `${index % 2 === 0 ? -10 : 10}px`,
-                  zIndex: index === 0 ? 4 : 4 - index
-                }}
-              >
-                <motion.div
-                  className="rounded-3xl p-6 shadow-lg h-full"
-                  style={{ backgroundColor: testimonial.color }}
-                  whileHover={hoverAnimation}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <motion.p 
-                    className="text-black text-lg font-medium mb-8"
-                    whileHover={{ scale: 1.02 }}
-                  >
-                    {testimonial.quote}
-                  </motion.p>
-                  <motion.div 
-                    className="flex items-center gap-3"
-                    whileHover={{ x: 5 }}
-                  >
-                    <div className="w-12 h-12 rounded-full bg-black/10 flex items-center justify-center flex-shrink-0">
-                      <svg
-                        className="w-6 h-6 text-black/40"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-black">{testimonial.name}</h3>
-                      <p className="text-sm text-black/80">{testimonial.title}</p>
-                    </div>
-                  </motion.div>
+                  </div>
                 </motion.div>
               </motion.div>
             ))}
