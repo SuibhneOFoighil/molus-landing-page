@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { RocketIcon, BellIcon, WrenchIcon } from 'lucide-react'
+import { handleSmoothScroll } from '@/lib/utils'
 
 const benefits = [
   {
@@ -74,8 +75,8 @@ export function PilotProgram() {
                 y: -5,
                 transition: { 
                   type: "spring",
-                  stiffness: 400,
-                  damping: 10
+                  stiffness: 200,
+                  damping: 15
                 }
               }}
               transition={{ 
@@ -87,8 +88,8 @@ export function PilotProgram() {
               className="bg-white rounded-3xl p-8 shadow-lg cursor-pointer"
             >
               <motion.div
-                whileHover={{ rotate: 15 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                whileHover={{ rotate: 10 }}
+                transition={{ type: "spring", stiffness: 200, damping: 15 }}
               >
                 <benefit.icon className="w-8 h-8 mb-4" />
               </motion.div>
@@ -129,10 +130,11 @@ export function PilotProgram() {
             whileTap={{ scale: 0.95 }}
           >
             <Link
-              href="/apply"
+              href="#contact"
+              onClick={(e) => handleSmoothScroll(e, '#contact')}
               className="inline-block bg-black text-white font-medium px-8 py-4 rounded-full text-lg hover:bg-black/90 transition-all duration-300 hover:shadow-xl hover:shadow-black/20"
             >
-              Apply Now to Join Our Pilot Program
+              Join our Pilot Program
             </Link>
           </motion.div>
         </motion.div>
