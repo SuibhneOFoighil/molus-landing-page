@@ -69,19 +69,19 @@ export function Solution() {
     {
       title: "Unlimited Low-Code/No-Code Tools",
       description: "Quickly prototype AI-driven features without deep dev expertise",
-      color: "#12C7E0",
+      color: "rgba(18, 199, 224, 0.3)", // Blue at 30% opacity
       delay: 1.8
     },
     {
       title: "Step-by-Step Tutorials",
       description: "Integrate AI seamlessly into your product with clear, guided lessons",
-      color: "#0EE574",
+      color: "rgba(14, 229, 116, 0.3)", // Green at 30% opacity
       delay: 2.1
     },
     {
       title: "Community of Founders",
       description: "Connect with peers launching AI-first solutions for shared insights",
-      color: "#E8990C",
+      color: "rgba(220, 100, 226, 0.3)", // Purple at 30% opacity
       delay: 2.4
     }
   ]
@@ -93,7 +93,7 @@ export function Solution() {
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="px-6 py-24 bg-black text-white"
+        className="px-6 py-24 bg-black text-white relative"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -140,14 +140,14 @@ export function Solution() {
         </div>
       </motion.section>
 
-      {/* Second Section - Grey background */}
+      {/* Second Section - Same black background */}
       <motion.section 
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="px-6 py-24 bg-zinc-900 text-white"
+        className="px-6 py-24 bg-black text-white relative"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto relative">
           <motion.h2 
             initial={{ y: 20, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
@@ -173,13 +173,27 @@ export function Solution() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
                 transition={{ delay: benefit.delay, duration: 0.5 }}
-                className="rounded-[24px] p-8 h-full"
+                className="relative rounded-[24px] p-8 h-full"
                 style={{ backgroundColor: benefit.color }}
               >
-                <h3 className="text-[28px] font-bold mb-4 text-black">
+                {/* Masked Line Animation Container */}
+                <div className="absolute left-0 top-0 w-full h-full overflow-hidden rounded-[24px]">
+                  <motion.div
+                    initial={{ scaleY: 0 }}
+                    animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+                    transition={{ 
+                      delay: benefit.delay + 0.4, 
+                      duration: 0.5,
+                      ease: [0.215, 0.61, 0.355, 1] // Custom easing for smoother animation
+                    }}
+                    className="absolute left-0 top-0 w-[3px] h-full bg-white/40 origin-top"
+                  />
+                </div>
+                
+                <h3 className="text-[28px] font-bold mb-4 text-white">
                   {benefit.title}
                 </h3>
-                <p className="text-[18px] leading-relaxed text-black/80">
+                <p className="text-[18px] leading-relaxed text-white/80">
                   {benefit.description}
                 </p>
               </motion.div>
