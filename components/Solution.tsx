@@ -224,7 +224,7 @@ export function Solution() {
             transition={{ delay: 2.7, duration: 0.5 }}
             className="text-center max-w-2xl mx-auto mt-16 mb-8 text-lg text-white/80"
           >
-            These resources are yours at no extra cost—because we're committed to your AI-first success.
+            These resources are yours at no extra cost—because we&apos;re committed to your AI-first success.
           </motion.p>
         </div>
       </motion.section>
