@@ -13,7 +13,7 @@ import { handleSmoothScroll } from '@/lib/utils'
 const NAVIGATION_ITEMS = [
   { label: 'About', href: '#about' },
   { label: 'Startups We\'ve Helped', href: '#startups' },
-  { label: 'Pilot Program', href: '#contact' }
+  { label: 'Pilot Program', href: '#pilot' }
 ] as const
 
 const ANIMATION_CONFIG = {

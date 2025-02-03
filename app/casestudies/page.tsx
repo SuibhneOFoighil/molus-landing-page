@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import Image from 'next/image'
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Construction } from 'lucide-react'
 
 export default function CaseStudies() {
   const handleBackClick = () => {
@@ -24,41 +23,24 @@ export default function CaseStudies() {
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back
             </Button>
-            <h1 className="text-4xl md:text-5xl font-bold">
-              We&apos;ve helped startups succeed
-            </h1>
-            <p className="text-lg text-white/60 max-w-2xl">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-              voluptas, quod, quia, voluptates quae voluptatibus quibusdam
-              voluptatum quos quidem quas nesciunt.
-            </p>
           </div>
 
-          {/* Case Studies Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Case Study Cards */}
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div
-                key={item}
-                className="bg-white/5 rounded-lg overflow-hidden hover:bg-white/10 transition-colors duration-300"
-              >
-                <div className="aspect-video relative">
-                  <Image
-                    src={`/images/case-study-${item}.jpg`}
-                    alt={`Case study ${item}`}
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="p-6 space-y-4">
-                  <h3 className="text-xl font-semibold">Case Study {item}</h3>
-                  <p className="text-white/60">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Quisquam voluptas, quod, quia, voluptates quae.
-                  </p>
-                </div>
-              </div>
-            ))}
+          {/* Under Construction Message */}
+          <div className="flex flex-col items-center justify-center text-center py-24 space-y-6">
+            <Construction className="w-16 h-16 text-[#ffda00] animate-bounce" />
+            <h1 className="text-4xl md:text-5xl font-bold">
+              Case Studies Coming Soon
+            </h1>
+            <p className="text-lg text-white/60 max-w-2xl">
+              We're currently documenting our success stories. Check back soon to see how we've helped startups transform their ideas into successful products.
+            </p>
+            <Button
+              variant="outline"
+              className="mt-8 text-white border-white/20 hover:bg-white hover:text-black"
+              onClick={handleBackClick}
+            >
+              Return to Homepage
+            </Button>
           </div>
         </div>
       </div>
