@@ -32,7 +32,7 @@ export default function CaseStudies() {
               Case Studies Coming Soon
             </h1>
             <p className="text-lg text-white/60 max-w-2xl">
-              We're currently documenting our success stories. Check back soon to see how we've helped startups transform their ideas into successful products.
+              We&apos;re currently documenting our success stories. Check back soon to see how we&apos;ve helped startups transform their ideas into successful products.
             </p>
             <Button
               variant="outline"
