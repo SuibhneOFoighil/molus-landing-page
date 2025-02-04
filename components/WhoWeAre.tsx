@@ -9,15 +9,15 @@ import { motion, AnimatePresence, useInView } from 'framer-motion'
 const teamMembers = [
   {
     name: "Suibhne Ó Foighil",
-    role: "Head of Engineering and Founder of Molus",
+    role: "Tech Lead and Founder of Molus",
     image: "/images/suibhne.jpeg",
     linkedin: "https://www.linkedin.com/in/suibhneofoighil/",
   },
   {
-    name: "Akhila Kosaraju",
-    role: "Head of Design and Founder of WhatifDesign",
-    image: "/images/akhila.jpeg",
-    linkedin: "https://www.linkedin.com/in/akhilakosaraju",
+    name: "Tejas & Akhila",
+    role: "Design Leads and Co-Founders of WhatifDesign",
+    image: "/images/whatifdesign-team.jpeg",
+    linkedin: "https://www.linkedin.com/company/whatifdesign",
     website: "https://www.whatifdesign.co/",
   },
   {
