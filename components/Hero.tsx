@@ -40,7 +40,7 @@ const HERO_CONTENT = {
   title: "Transform Your Idea into Reality—20x Faster with AI-Powered Development",
   description: {
     prefix: "We help founders build ",
-    emphasis: "enterprise-grade",
+    emphasis: "production-grade",
     suffix: " software at a fraction of the usual cost. Let us handle the tech so you can focus on growing your startup."
   },
   ctaText: "Join our Pilot Program"

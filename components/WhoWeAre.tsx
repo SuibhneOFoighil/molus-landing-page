@@ -97,7 +97,7 @@ export function WhoWeAre() {
           transition={{ delay: 0.4, duration: 0.5 }}
           className="text-3xl md:text-5xl lg:text-6xl font-bold text-center mb-6 md:mb-8 max-w-5xl mx-auto"
         >
-          Dedicated to helping founders launch & scale AI-driven B2B SaaS
+          Dedicated to helping founders launch & scale AI-first Services
         </motion.h2>
 
         <motion.p 
@@ -106,8 +106,7 @@ export function WhoWeAre() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-12 md:mb-16 text-base md:text-lg"
         >
-          We&apos;re a team of designers, developers, and entrepreneurs dedicated to helping founders launch and scale AI-drivenf B2B SaaS. 
-          By managing the entire development lifecycle—from design to deployment—we let you focus on closing deals, 
+          As a team of designers, developers, and entrepreneurs, we manage the entire development lifecycle—from design to engineering—so you can focus on closing deals, 
           solving real problems, and driving innovation.
         </motion.p>
 

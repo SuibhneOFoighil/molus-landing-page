@@ -131,7 +131,7 @@ const SectionHeader = ({ isInView }: AnimatedComponentProps) => (
       transition={{ delay: 0.6, ...ANIMATION_CONFIG.fadeUp.transition }}
       className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-6"
     >
-      Startups we&apos;ve partnered with
+      Who we&apos;ve worked with
     </motion.h2>
     
     <motion.p 
@@ -140,7 +140,7 @@ const SectionHeader = ({ isInView }: AnimatedComponentProps) => (
       transition={{ delay: 0.8, ...ANIMATION_CONFIG.fadeUp.transition }}
       className="text-[#50555e] text-lg md:text-xl text-center max-w-3xl mx-auto mb-16"
     >
-      We&apos;ve built core applications and AI modules that empower startups to innovate and grow.
+      We&apos;ve built core applications and workflows that empower startups to innovate and grow.
     </motion.p>
   </>
 )
