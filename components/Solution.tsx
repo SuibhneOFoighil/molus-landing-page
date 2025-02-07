@@ -144,7 +144,7 @@ export function Solution() {
       </motion.section>
 
       {/* Second Section - Same black background */}
-      <motion.section 
+      {false && <motion.section 
         ref={secondSectionRef}
         initial={{ opacity: 0 }}
         animate={isSecondSectionInView ? { opacity: 1 } : { opacity: 0 }}
@@ -232,7 +232,7 @@ export function Solution() {
             These resources are yours at no extra cost—because we&apos;re committed to your AI-first success.
           </motion.p>
         </div>
-      </motion.section>
+      </motion.section>}
     </div>
   )
 }

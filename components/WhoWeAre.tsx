@@ -22,7 +22,7 @@ const teamMembers = [
   },
   {
     name: "Moses Lee",
-    role: "Lead Business Advisor",
+    role: "Head of Biz Dev and Strategic Advisor",
     image: "/images/moseslee.jpeg",
     linkedin: "https://www.linkedin.com/in/mosesklee/",
   },
@@ -106,7 +106,7 @@ export function WhoWeAre() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="text-center max-w-3xl mx-auto mb-12 md:mb-16 text-base md:text-lg"
         >
-          We&apos;re a venture studio dedicated to helping founders launch and scale AI-driven B2B SaaS. 
+          We&apos;re a team of designers, developers, and entrepreneurs dedicated to helping founders launch and scale AI-drivenf B2B SaaS. 
           By managing the entire development lifecycle—from design to deployment—we let you focus on closing deals, 
           solving real problems, and driving innovation.
         </motion.p>
